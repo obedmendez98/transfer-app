@@ -1,0 +1,17 @@
+<div class="head">
+    <div class="menu">
+        <div>
+            <label for="">Company</label>
+        </div>
+        <div [class.active]="isActive('/home')">
+            <label  routerLink="/home" for="">Home</label>
+        </div>
+        <div [class.active]="isActive('/transfer')">
+            <label  routerLink="/transfer" for="">Transfer</label>
+        </div>
+        
+    </div>
+    <div class="log">
+        <label for="">Log out</label>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<app-header></app-header>
+<div class="content">
+    <div class="first">
+        <div class="form">
+            <h2>Create new transfer</h2>
+            <div class="item">
+                <label for="">Select origin account</label>
+                <select [(ngModel)]="selectedAccount" name="selectedAccount">
+                  <option value="">Select option</option>
+                  <option *ngFor="let option of accounts" [value]="option._id">{{ option.account }} - ${{option.amount}} </option>
+                </select>
+            </div>
+            <div class="item">
+                <label for="">Destination account</label>
+                <input [(ngModel)]="destination" name="destination" type="text">
+            </div>
+            <div class="item">
+              <label for="">Amount</label>
+              <input [(ngModel)]="amount" name="amount" type="number">
+            </div>
+            <div class="item">
+              <label for="">Concept</label>
+              <input [(ngModel)]="concept" name="concept" type="text" placeholder="optional">
+          </div>
+            <div class="btns">
+                <button (click)="sendTransfer()">transfer</button>
+                <button (click)="reset()">Cancel</button>
+            </div>
+        </div>
+        <div class="canvas">
+            <canvas id="MyChart" >{{ chart }}</canvas>
+        </div>
+        
+    </div>
+    <div class="second" *ngFor="let originAccount of objectKeys(groupedTransfers)">
+      <h3>Origin Account: {{ originAccount }}</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Destination Account</th>
+            <th>Transfer Date</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transfer of groupedTransfers[originAccount]">
+            <td>{{ transfer.destination_account }}</td>
+            <td>{{ transformDate(transfer.transfer_date)}}</td>
+            <td>${{ transfer.amount }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+</div>

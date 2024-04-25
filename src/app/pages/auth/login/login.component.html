@@ -1,0 +1,25 @@
+<div class="content">
+    <div class="card">
+        <label class="title" for="">Login</label>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="item">
+              <input type="text" placeholder="Username" formControlName="username" (blur)="onBlur('username')">
+            </div>
+            <div *ngIf="loginForm.get('username')?.dirty && !isUsernameValid" class="error-message">
+                Username must be between 8 and 20 characters and accept only letters, numbers, and the following special characters: !"$%&/
+            </div>
+            <div class="item">
+              <input type="password" placeholder="Password" formControlName="password" (blur)="onBlur('password')">
+            </div>
+            <div *ngIf="loginForm.get('password')?.dirty && !isPasswordValid" class="error-message">
+                Password must be between 8 and 20 characters and accept only letters, numbers, and the following special characters: !"$%&/, at least one uppercase letter, one lowercase letter, and one special character
+            </div>
+            <div class="btn">
+              <button [disabled]="!loginForm.valid || !isPasswordValid || !isUsernameValid">Enter</button>
+            </div>
+            <div *ngIf="!isFormValid" class="error-message">
+              {{messageError}}
+            </div>
+        </form>
+    </div>
+</div>
