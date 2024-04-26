@@ -46,7 +46,7 @@ export class TransferComponent implements OnInit {
 
   async getTransferOrigin(){
     try {
-      const response = await this.transferService.getTransfersGroupedByOriginAccount('ss').toPromise();
+      const response = await this.transferService.getTransfersGroupedByOriginAccount().toPromise();
       console.log('Cuentas obtenidas:', response);
       this.groupedTransfers = response;
 
@@ -56,8 +56,8 @@ export class TransferComponent implements OnInit {
   }
 
   async createChart(){
-    const labels = this.transferDestination?.map((item: { _id: any; }) => item._id); // Extrae los valores _id como etiquetas
-    const values = this.transferDestination?.map((item: { total: any; }) => item.total); // Extrae los valores total como datos
+    const labels = this.transferDestination?.map((item: { _id: any; }) => item._id); 
+    const values = this.transferDestination?.map((item: { total: any; }) => item.total); 
   
     this.chart = new Chart("MyChart", {
       type: 'pie',
@@ -85,7 +85,7 @@ export class TransferComponent implements OnInit {
 
   async updateChart(){
     try {
-      const response = await this.transferService.getTransfersGroupedByDestinationAccount('sss').toPromise();
+      const response = await this.transferService.getTransfersGroupedByDestinationAccount().toPromise();
 
       this.transferDestination = response;
       const labels = this.transferDestination.map((item: { _id: any; }) => item._id);
@@ -102,10 +102,12 @@ export class TransferComponent implements OnInit {
 
   async sendTransfer(){
     if(this.selectedAccount === ''){
+      alert('Seleccione una cuenta')
       return;
     }
 
     if(this.amount === 0){
+      alert('Ingrese el monto a transferir')
       return
     }
 
@@ -116,6 +118,12 @@ export class TransferComponent implements OnInit {
     }
     if(this.amount > accountSelected.amount){
       alert('El monto se exede');
+      return;
+    }
+
+    console.log(this.destination.length);
+    if(this.destination.length < 8  && this.destination.length > 8 ){
+      alert('La cuenta de destino debe tener una longitud de 8 caracteres');
       return;
     }
 

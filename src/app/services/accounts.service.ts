@@ -7,7 +7,6 @@ export interface Account {
   id: number;
   accountNumber: string;
   balance: number;
-  // Otras propiedades de la cuenta
 }
 
 export interface AccountResponse {

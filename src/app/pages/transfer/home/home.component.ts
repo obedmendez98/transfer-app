@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
   }
 
   async createChart(){
-    const labels = this.transferDestination?.map((item: { _id: any; }) => item._id); // Extrae los valores _id como etiquetas
-    const values = this.transferDestination?.map((item: { total: any; }) => item.total); // Extrae los valores total como datos
+    const labels = this.transferDestination?.map((item: { _id: any; }) => item._id);
+    const values = this.transferDestination?.map((item: { total: any; }) => item.total); 
   
     this.chart = new Chart("MyChart", {
       type: 'pie',
@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
 
   async updateChart(){
     try {
-      const response = await this.transferService.getTransfersGroupedByDestinationAccount('sss').toPromise();
+      const response = await this.transferService.getTransfersGroupedByDestinationAccount().toPromise();
 
       this.transferDestination = response;
       const labels = this.transferDestination.map((item: { _id: any; }) => item._id);
