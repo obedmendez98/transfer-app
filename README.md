@@ -1,11 +1,29 @@
-# Apptransfer
+## Requisitos
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
+- Node.js instalado en tu máquina. 
+- Angular CLI instalado de forma global (version 14 recomendado).
 
-## Development server
+## Instalación
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Clona este repositorio en tu máquina local:
 
-##
+   git clone https://github.com/tu-usuario/frontend-app.git
+2. Ve al directorio del proyecto:
 
+    cd frontend-app
+3. Instala las dependencias:
 
+    npm install
+## Ejecución
+
+1. Inicia el servidor de desarrollo:
+
+    ng serve
+
+## RECOMENDACION
+
+Si se importo las colecciones a la base de datos
+use estas credenciales
+
+username: obed2aaa
+password: ccA1!asd
