@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   public chart: any;
   public transferDestination: any = [];
   public balance: any = [];
+  public gastos: any = [];
 
   constructor(
     private accountService: AccountsService,
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.createChart();
     this.getBalance();  
+    this.getGastos();
   }
 
   async createChart(){
@@ -55,8 +57,22 @@ export class HomeComponent implements OnInit {
   }
 
   async getBalance(){
-    const response = await this.accountService.getBalance().toPromise();
-    this.balance = response?.balances ?? [];
+    try {
+      const response = await this.accountService.getBalance().toPromise();
+      this.balance = response?.balances ?? [];
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async getGastos(){
+    try {
+      const response = await this.transferService.getTop3TransfersByAmount().toPromise();
+      console.log(response);
+      this.gastos = response;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async updateChart(){
@@ -76,4 +92,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  transformDate(date: string){
+    return new Date(date).toISOString().split('T')[0];
+  }
 }

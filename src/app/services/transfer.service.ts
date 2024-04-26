@@ -10,7 +10,7 @@ export class TransferService {
   constructor(private http: HttpClient) { }
 
   getAllTransfers(userId: string): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:3000/api/transfers/${userId}`);
+    return this.http.get<any[]>(`http://localhost:3000/api/transfers/transfers/${userId}`);
   }
 
   createTransfer(data: any): Observable<any[]> {
@@ -21,8 +21,8 @@ export class TransferService {
     return this.http.get<any>(`http://localhost:3000/api/transfers/grouped-by-destination/${userId}`);
   }
 
-  getTop3TransfersByAmount(userId: string): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:3000/api/transfers/top-3-by-amount/${userId}`);
+  getTop3TransfersByAmount(): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:3000/api/transfers/top-3-by-amount/`);
   }
 
   getTransfersGroupedByOriginAccount(userId: string): Observable<any> {

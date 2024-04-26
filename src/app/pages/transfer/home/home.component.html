@@ -7,7 +7,24 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui perspiciatis facilis pariatur ducimus facere ad architecto similique libero dolores labore cum saepe impedit maiores illum, fugiat ea amet. Labore, repudiandae.</p>
         </div>
         <div class="card">
-            <img src="../../../../assets/img.png" alt="">
+            <table>
+                <thead>
+                  <tr>
+                    <th>Account</th>
+                    <th>Amount</th>
+                    <th>Concept</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let gasto of gastos">
+                        <td>{{gasto.destination_account}}</td>
+                        <td>${{gasto.amount}}</td>
+                        <td> {{gastos.concept}} </td>
+                        <td>{{transformDate(gasto.transfer_date)}}</td>
+                    </tr>
+                </tbody>
+            </table>
             <h3>Main Expenses</h3>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa atque ullam enim blanditiis cupiditate doloremque nulla officia. Ex voluptatem, dicta veritatis itaque, provident magni dolorum atque, tempora non enim impedit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ipsum magnam atque maxime molestiae, culpa dignissimos eum velit, pariatur reiciendis nam eos aperiam recusandae quibusdam? Quae consectetur vel dignissimos odit!</p>
         </div>
@@ -29,7 +46,7 @@
                             <td>{{account.lastTransferDate}}</td>
                         </tr>
                     </tbody>
-                  </table>
+                </table>
             </div>
         </div>
     </div>
